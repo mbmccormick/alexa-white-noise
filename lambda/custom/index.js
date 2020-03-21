@@ -10,8 +10,6 @@ const LaunchRequestHandler = {
     async handle(handlerInput) {
         console.log("INFO: Handling LaunchRequest");
 
-        var offsetInMilliseconds = this.attributes["offsetInMilliseconds"];
-
         return handlerInput.responseBuilder
             .addAudioPlayerPlayDirective("REPLACE_ALL", AUDIO_URL, AUDIO_NAME, null, 0)
             .getResponse();
