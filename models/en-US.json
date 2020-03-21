@@ -1,0 +1,24 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "white noise",
+            "intents": [
+                {
+                    "name": "AMAZON.PauseIntent"
+                },
+                {
+                    "name": "AMAZON.ResumeIntent"
+                },
+                {
+                    "name": "AMAZON.StopIntent"
+                },
+                {
+                    "name": "AMAZON.CancelIntent"
+                },
+                {
+                    "name": "AMAZON.HelpIntent"
+                }
+            ]
+        }
+    }
+}
