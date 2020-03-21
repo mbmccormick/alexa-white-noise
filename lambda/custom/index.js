@@ -48,7 +48,7 @@ const PlaybackFailedHandler = {
     async handle(handlerInput) {
         console.log("INFO: Handling AudioPlayer.PlaybackFailed");
 
-        var message = "TODO: Implement PlaybackFailed handler.";
+        var message = "Oops! Something went wrong during audio playback. Please try again later.";
 
         message = alexa.escapeXmlCharacters(message);
         
@@ -81,7 +81,7 @@ const StopRequestHandler = {
                 handlerInput.requestEnvelope.request.intent.name === "AMAZON.CancelIntent" ||
                 handlerInput.requestEnvelope.request.intent.name === "AMAZON.PauseIntent");
     },
-    handle(handlerInput) {
+    async handle(handlerInput) {
         console.log("INFO: Handling " + handlerInput.requestEnvelope.request.intent.name);
 
         var attributes = await handlerInput.attributesManager.getPersistentAttributes();
@@ -98,10 +98,10 @@ const HelpRequestHandler = {
         return handlerInput.requestEnvelope.request.type === "IntentRequest" &&
             handlerInput.requestEnvelope.request.intent.name === "AMAZON.HelpIntent";
     },
-    handle(handlerInput) {
+    async handle(handlerInput) {
         console.log("INFO: Handling " + handlerInput.requestEnvelope.request.intent.name);
 
-        var message = "TODO: Implement HelpIntent handler.";
+        var message = "White Noise is a simple, no-frills white noise skill for Alexa. Just say 'Alexa, play White Noise' to get started.";
 
         message = alexa.escapeXmlCharacters(message);
         
@@ -115,10 +115,10 @@ const ErrorHandler = {
     canHandle() {
         return true;
     },
-    handle(handlerInput, error) {
+    async handle(handlerInput, error) {
         console.log("ERROR: " + error.message);
 
-        var message = "TODO: Implement Error handler.";
+        var message = "Oops! An error has occurred. Please try again later.";
 
         message = alexa.escapeXmlCharacters(message);
         
