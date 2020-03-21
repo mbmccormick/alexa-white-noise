@@ -66,10 +66,8 @@ const ResumeRequestHandler = {
     async handle(handlerInput) {
         console.log("INFO: Handling " + handlerInput.requestEnvelope.request.intent.name);
 
-        var attributes = await handlerInput.attributesManager.getPersistentAttributes();
-
         return handlerInput.responseBuilder
-            .addAudioPlayerPlayDirective("REPLACE_ALL", AUDIO_URL, AUDIO_NAME, null, attributes.offsetInMilliseconds)
+            .addAudioPlayerPlayDirective("REPLACE_ALL", AUDIO_URL, AUDIO_NAME, null, 0)
             .getResponse();
     }
 };
@@ -83,9 +81,6 @@ const StopRequestHandler = {
     },
     async handle(handlerInput) {
         console.log("INFO: Handling " + handlerInput.requestEnvelope.request.intent.name);
-
-        var attributes = await handlerInput.attributesManager.getPersistentAttributes();
-        attributes.offsetInMilliseconds = handlerInput.requestEnvelope.request.offsetInMilliseconds;
 
         return handlerInput.responseBuilder
             .addAudioPlayerStopDirective()
