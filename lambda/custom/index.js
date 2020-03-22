@@ -8,7 +8,7 @@ const LaunchRequestHandler = {
         return handlerInput.requestEnvelope.request.type === "LaunchRequest";
     },
     async handle(handlerInput) {
-        console.log("INFO: Handling LaunchRequest");
+        console.log("Handling LaunchRequest");
 
         return handlerInput.responseBuilder
             .addAudioPlayerPlayDirective("REPLACE_ALL", AUDIO_URL, AUDIO_NAME, null, 0)
@@ -21,10 +21,10 @@ const PlaybackNearlyFinishedHandler = {
         return handlerInput.requestEnvelope.request.type === "AudioPlayer.PlaybackNearlyFinished";
     },
     async handle(handlerInput) {
-        console.log("INFO: Handling AudioPlayer.PlaybackNearlyFinished");
+        console.log("Handling AudioPlayer.PlaybackNearlyFinished");
 
         return handlerInput.responseBuilder
-            .addAudioPlayerPlayDirective("ENQUEUE", AUDIO_URL, AUDIO_NAME, AUDIO_NAME, 0)
+            .addAudioPlayerPlayDirective("ENQUEUE", AUDIO_URL, AUDIO_NAME, 0, AUDIO_NAME)
             .getResponse();
     }
 };
@@ -34,7 +34,7 @@ const PlaybackFinishedHandler = {
         return handlerInput.requestEnvelope.request.type === "AudioPlayer.PlaybackFinished";
     },
     async handle(handlerInput) {
-        console.log("INFO: Handling AudioPlayer.PlaybackFinished");
+        console.log("Handling AudioPlayer.PlaybackFinished");
 
         return handlerInput.responseBuilder
             .getResponse();
@@ -46,7 +46,7 @@ const PlaybackFailedHandler = {
         return handlerInput.requestEnvelope.request.type === "AudioPlayer.PlaybackFailed";
     },
     async handle(handlerInput) {
-        console.log("INFO: Handling AudioPlayer.PlaybackFailed");
+        console.log("Handling AudioPlayer.PlaybackFailed");
 
         var message = "Oops! Something went wrong during audio playback. Please try again later.";
 
@@ -64,7 +64,7 @@ const ResumeRequestHandler = {
             handlerInput.requestEnvelope.request.intent.name === "AMAZON.ResumeIntent";
     },
     async handle(handlerInput) {
-        console.log("INFO: Handling " + handlerInput.requestEnvelope.request.intent.name);
+        console.log("Handling " + handlerInput.requestEnvelope.request.intent.name);
 
         return handlerInput.responseBuilder
             .addAudioPlayerPlayDirective("REPLACE_ALL", AUDIO_URL, AUDIO_NAME, null, 0)
@@ -80,7 +80,7 @@ const StopRequestHandler = {
                 handlerInput.requestEnvelope.request.intent.name === "AMAZON.PauseIntent");
     },
     async handle(handlerInput) {
-        console.log("INFO: Handling " + handlerInput.requestEnvelope.request.intent.name);
+        console.log("Handling " + handlerInput.requestEnvelope.request.intent.name);
 
         return handlerInput.responseBuilder
             .addAudioPlayerStopDirective()
@@ -94,7 +94,7 @@ const HelpRequestHandler = {
             handlerInput.requestEnvelope.request.intent.name === "AMAZON.HelpIntent";
     },
     async handle(handlerInput) {
-        console.log("INFO: Handling " + handlerInput.requestEnvelope.request.intent.name);
+        console.log("Handling " + handlerInput.requestEnvelope.request.intent.name);
 
         var message = "White Noise is a simple, no-frills white noise skill for Alexa. Just say 'Alexa, play White Noise' to get started.";
 
@@ -111,7 +111,8 @@ const ErrorHandler = {
         return true;
     },
     async handle(handlerInput, error) {
-        console.log("ERROR: " + error.message);
+        console.error(error.message);
+        console.error(handlerInput);
 
         var message = "Oops! An error has occurred. Please try again later.";
 
