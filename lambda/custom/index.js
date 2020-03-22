@@ -1,6 +1,6 @@
 const alexa = require("ask-sdk-core");
 
-var AUDIO_URL = "https://raw.githubusercontent.com/mbmccormick/alexa-white-noise/master/assets/ab-f-031616-38571606_tv-static-white-noise-07.mp3";
+var AUDIO_URL = "https://raw.githubusercontent.com/mbmccormick/alexa-white-noise/master/assets/white-noise-audio.mp3";
 var AUDIO_NAME = "White Noise";
 
 const LaunchRequestHandler = {
