@@ -1,6 +1,6 @@
 {
   "name": "alexa-white-noise",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "An Alexa white noise skill.",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "author": "Matt McCormick",
   "dependencies": {
-    "ask-sdk-core": "^2.7.0",
-    "ask-sdk-model": "^1.27.0"
+    "ask-sdk-core": "^2.10.1",
+    "ask-sdk-model": "^1.33.0"
   }
 }
