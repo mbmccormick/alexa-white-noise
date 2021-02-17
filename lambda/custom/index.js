@@ -16,6 +16,18 @@ const LaunchRequestHandler = {
     }
 };
 
+const PlaybackStartedHandler = {
+    canHandle(handlerInput) {
+        return handlerInput.requestEnvelope.request.type === "AudioPlayer.PlaybackStarted";
+    },
+    async handle(handlerInput) {
+        console.log("Handling AudioPlayer.PlaybackStarted");
+
+        return handlerInput.responseBuilder
+            .getResponse();
+    }
+};
+
 const PlaybackNearlyFinishedHandler = {
     canHandle(handlerInput) {
         return handlerInput.requestEnvelope.request.type === "AudioPlayer.PlaybackNearlyFinished";
@@ -35,6 +47,18 @@ const PlaybackFinishedHandler = {
     },
     async handle(handlerInput) {
         console.log("Handling AudioPlayer.PlaybackFinished");
+
+        return handlerInput.responseBuilder
+            .getResponse();
+    }
+};
+
+const PlaybackStoppedHandler = {
+    canHandle(handlerInput) {
+        return handlerInput.requestEnvelope.request.type === "AudioPlayer.PlaybackStopped";
+    },
+    async handle(handlerInput) {
+        console.log("Handling AudioPlayer.PlaybackStopped");
 
         return handlerInput.responseBuilder
             .getResponse();
@@ -129,8 +153,10 @@ const skillBuilder = alexa.SkillBuilders.custom();
 exports.handler = skillBuilder
     .addRequestHandlers(
         LaunchRequestHandler,
+        PlaybackStartedHandler,
         PlaybackNearlyFinishedHandler,
         PlaybackFinishedHandler,
+        PlaybackStoppedHandler,
         PlaybackFailedHandler,
         ResumeRequestHandler,
         StopRequestHandler,
