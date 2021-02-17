@@ -11,7 +11,7 @@ const LaunchRequestHandler = {
         console.log("Handling LaunchRequest");
 
         return handlerInput.responseBuilder
-            .addAudioPlayerPlayDirective("REPLACE_ALL", AUDIO_URL, AUDIO_NAME, null, 0)
+            .addAudioPlayerPlayDirective("REPLACE_ALL", AUDIO_URL, AUDIO_NAME, 0, null)
             .getResponse();
     }
 };
@@ -67,7 +67,7 @@ const ResumeRequestHandler = {
         console.log("Handling " + handlerInput.requestEnvelope.request.intent.name);
 
         return handlerInput.responseBuilder
-            .addAudioPlayerPlayDirective("REPLACE_ALL", AUDIO_URL, AUDIO_NAME, null, 0)
+            .addAudioPlayerPlayDirective("REPLACE_ALL", AUDIO_URL, AUDIO_NAME, 0, null)
             .getResponse();
     }
 };
